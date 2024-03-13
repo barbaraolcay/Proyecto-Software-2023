@@ -8,7 +8,7 @@ Cuentas de administradores:
 * email: "administrador1@gmail.com", contraseña: "123456",
 
 La correcta ejecucion del sitio web se puede llevar a cabo de las siguientes formas:
-- Local: http://localhost:3000/
-
-- Link directo Render: https://app-render-d37e.onrender.com
+- Local: http://localhost:3000/ (Para MacOS con error, colocar antes de correr rails s: export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES)
   
+- Link directo Render: https://app-render-d37e.onrender.com
+
