@@ -10,4 +10,5 @@ Cuentas de administradores:
 La correcta ejecucion del sitio web se puede llevar a cabo de las siguientes formas:
 - Local: http://localhost:3000/
 
-- Link directo Render: https://app-render-r3z4.onrender.com
+- Link directo Render: https://app-render-d37e.onrender.com
+  
