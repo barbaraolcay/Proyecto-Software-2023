@@ -1,0 +1,61 @@
+/*
+ * Este es el archivo de manifiesto que se compilará en application.css, que incluirá todos los archivos
+ * listados a continuación.
+ *
+ * Cualquier archivo CSS (y SCSS, si está configurado) dentro de este directorio, lib/assets/stylesheets, o en cualquier directorio de assets/stylesheets de un complemento
+ * se puede referenciar aquí utilizando una ruta relativa.
+ *
+ * Puedes agregar estilos en toda la aplicación en este archivo y aparecerán en la parte inferior del
+ * archivo compilado para que los estilos que agregues aquí tengan prioridad sobre los estilos definidos en cualquier otro archivo CSS
+ * en este directorio. Los estilos en este archivo deben agregarse después de la última declaración require_*.
+ * En general, es mejor crear un archivo nuevo por ámbito de estilo.
+ */
+
+ @import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap');
+
+ body {
+   background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   color: #000000;
+   font-family: 'Nunito', sans-serif;
+ }
+ 
+ .box {
+   background-color: #FFFFFF;
+   border-radius: 10px;
+   padding: 20px;
+   margin: 50px auto; /* Agregado el margen */
+   max-width: 800px;
+ }
+ 
+ h1 {
+   font-weight: bold;
+   font-size: 24px;
+   text-align: center;
+ }
+ 
+ h2 {
+   font-weight: 600;
+   font-size: 20px;
+ }
+ 
+ p {
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 1.5;
+ }
+ 
+ a {
+   color: #000000;
+   text-decoration: none;
+   font-weight: 600;
+ }
+
+ .producto-imagen {
+  width: 310px;
+  height: 200px;
+}
+ 
+ /* Resto de los estilos existentes */

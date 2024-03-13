@@ -1,0 +1,40 @@
+<div class="row text-center justify-content-center">
+  <div class="col-md-10">
+    <br>
+    <div class="box">
+      <h1>Reseñas</h1>
+
+      <% if @resenas.empty? %>
+        <p>No hay reseñas disponibles.</p>
+      <% else %>
+        <br />
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Calificación</th>
+              <th>Comentario</th>
+              <th>User</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @resenas.each do |resena| %>
+              <tr>
+                <td><%= resena.producto.nombre %></td>
+                <td><%= resena.calificacion %></td>
+                <td><%= resena.comentario %></td>
+                <td><%= resena.user.email %></td>
+                <td>
+                  <%= button_to "Eliminar", eliminar_resena_path(resena.id), method: :delete, class: "btn btn-danger", data: { confirm: "¿Estás seguro de eliminar esta reseña?" } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        
+      <% end %>
+    </div>
+  </div>
+</div>
+

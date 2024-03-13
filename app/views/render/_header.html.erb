@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to 'MusicAPP', root_path, class: 'navbar-brand' %>
+  <%= image_tag(current_user.image, style: "display:inline-block; width: 50px; height: 50px; border-radius:50%;") if user_signed_in? && current_user.image.attached? %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Sobre Nosotros", render_about_path, class:"nav-link" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "Preguntas frecuentes", render_preguntas_path, class:"nav-link" %>
+      </li>
+       
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Productos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Parlantes, Equipos e Instrumentos", render_parlantes_path, class: "dropdown-item category-link" %>
+
+        <%if user_signed_in? %>
+
+ 
+
+
+
+        <li class="nav-item">
+        <% if current_user.admin? %>
+          <%= link_to 'Reservas', admin_reservas_path, class: "nav-link" %>
+        </li>
+        <% end %>
+  
+
+
+        <li class="nav-item">
+        <% if current_user.admin? %>
+          <%= link_to 'Reseñas', admin_resenas_path, class: "nav-link" %>
+        </li>
+        <% end %>
+
+
+        <% if user_signed_in? && !current_user.admin? %>
+        <li class="nav-item">
+          <%= link_to "Reservas", mis_reservas_path, class: "nav-link" %>
+        </li>
+      <% end %>
+
+      <% if user_signed_in? && !current_user.admin? %>
+      <li class="nav-item" >
+      <%= link_to "Reseñas", resenas_path, class:"nav-link" %>
+      </li>
+      <% end %>
+
+      <li class="nav-item">
+      <%= link_to "Editar Perfil", edit_user_registration_path, class:"nav-link" %>
+      </li>
+
+      <li class="nav-item">
+      <%= button_to "Cerrar sesión", destroy_user_session_path, method: :delete, class:"btn btn-dark" %>
+      </li>
+
+      
+      
+
+      <% else %>
+
+      <li class="nav-item" >
+      <%= link_to "Reseñas", resenas_path, class:"nav-link" %>
+      </li>
+      
+        <li class="nav-item my-2 my-sm-0">
+          <%= link_to "Iniciar sesión", new_user_session_path, class:"nav-link" %>
+        </li>
+  
+        <li class="nav-item my-2 my-sm-0">
+          <%= link_to "Crear cuenta", new_user_registration_path, class:"nav-link" %>
+        </li>
+
+      
+
+
+ 
+      <% end %>
+
+
+    
+  </div>
+</nav>

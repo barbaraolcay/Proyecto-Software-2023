@@ -1,0 +1,67 @@
+<div class="row text-center justify-content-center">
+  <div class="col-md-6">
+    <br>
+    <div class="box">
+      <h3>Parlantes y Equipos</h3>
+    </div>
+
+    <% @productos.each do |producto| %>
+      <% if producto.nombre.start_with?("Parlante", "Equipo") %>
+        <div class="box">
+          <div class="producto">
+            <h2><%= producto.nombre %></h2>
+            <p>Precio: <%= number_to_currency(producto.precio, unit: "$", separator: ",", delimiter: ".") %></p>
+            <p>Disponibilidad: <%= producto.disponibilidad ? "Si" : "No" %></p>
+            <p>Descripción: <%= producto.descripcion %></p>
+            <% if producto.foto.attached? %>
+              <%= image_tag producto.foto, class: "producto-imagen" %>
+            <% else %>
+              <p>No hay imagen disponible</p>
+            <% end %>
+            <% if user_signed_in? && !current_user.admin? %>
+              <%= button_to "Reservar", reservar_producto_path(producto[:id]), method: :post, class: "btn btn-primary" %>
+              <% if current_user.reservas.exists?(producto_id: producto[:id]) %>
+                <br>
+                <%= button_to "Cancelar reserva", reservar_producto_path(producto[:id]), method: :delete, data: { confirm: "¿Estás seguro de cancelar la reserva?" }, class: "btn btn-danger" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <br>
+    <div class="box">
+      <h3>Instrumentos</h3>
+    </div>
+
+    <% @productos.each do |producto| %>
+      <% if producto.nombre.start_with?("Guitarra", "Batería", "Teclado", "Bajo", "Saxofón", "Acordeón") %>
+        <div class="box">
+          <div class="producto">
+            <h2><%= producto.nombre %></h2>
+            <p>Precio: <%= number_to_currency(producto.precio, unit: "$", separator: ",", delimiter: ".") %></p>
+            <p>Disponibilidad: <%= producto.disponibilidad ? "Si" : "No" %></p>
+            <p>Descripción: <%= producto.descripcion %></p>
+            <% if producto.foto.attached? %>
+              <%= image_tag producto.foto, class: "producto-imagen" %>
+            <% else %>
+              <p>No hay imagen disponible</p>
+            <% end %>
+            <% if user_signed_in? && !current_user.admin? %>
+              <%= button_to "Reservar", reservar_producto_path(producto[:id]), method: :post, class: "btn btn-primary" %>
+              <% if current_user.reservas.exists?(producto_id: producto[:id]) %>
+                <br>
+                <%= button_to "Cancelar reserva", reservar_producto_path(producto[:id]), method: :delete, data: { confirm: "¿Estás seguro de cancelar la reserva?" }, class: "btn btn-danger" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+

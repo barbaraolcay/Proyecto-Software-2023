@@ -1,0 +1,39 @@
+<div class="row text-center justify-content-center">
+  <div class="col-md-8">
+    <br>
+    <div class="box">
+      <h1>Reseñas</h1>
+ 
+      <% if @resenas.empty? %>
+        <p>No hay reseñas disponibles.</p>
+      <% else %>
+      <br />
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Calificación</th>
+              <th>Comentario</th>
+              <th>User</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @resenas.each do |resena| %>
+              <tr>
+                <td><%= resena.producto.nombre %></td>
+                <td><%= resena.calificacion %></td>
+                <td><%= resena.comentario %></td>
+                <td><%= resena.user.email %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+
+      <% if user_signed_in? && !current_user.admin? %>
+      <%= link_to "Hacer una reseña", new_resena_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

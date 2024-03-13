@@ -1,0 +1,32 @@
+<h1>Productos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Descripción</th>
+      <th>Disponibilidad</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @productos.each do |producto| %>
+      <tr>
+        <td><%= producto.id %></td>
+        <td><%= producto.nombre %></td>
+        <td><%= producto.precio %></td>
+        <td><%= producto.descripcion %></td>
+        <td><%= producto.disponibilidad %></td>
+        <td>
+          <%= link_to "Editar", edit_producto_path(producto) %>
+          <%= link_to "Eliminar", destroy_producto_path(producto), method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Nuevo Producto", new_producto_path %>
+<%= link_to "Volver", root_path %>

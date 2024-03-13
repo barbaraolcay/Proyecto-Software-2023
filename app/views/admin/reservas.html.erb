@@ -1,0 +1,57 @@
+<div class="row text-center justify-content-center">
+  <div class="col-md-8">
+    <br>
+    <div class="box">
+      <h1>Reservas</h1>
+
+      <% if @reservas.any? %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Producto</th>
+              <th>Fecha de Reserva</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @reservas.each do |reserva| %>
+              <tr>
+                <td><%= reserva.user.email %></td>
+                <td><%= reserva.producto.nombre %></td>
+                <td><%= reserva.created_at.strftime("%d/%m/%Y %H:%M:%S") %></td>
+                <td><%= reserva.estado %></td>
+                <td>
+                  <% if reserva.estado == 'Pendiente' %>
+                  <%= button_to "Aceptada", update_estado_reserva_path(reserva.id, estado: "Aceptada"), method: :patch, class: "btn btn-success" %>
+                  <br>
+                  <%= button_to "Rechazada", update_estado_reserva_path(reserva.id, estado: "Rechazada"), method: :patch, class: "btn btn-secondary" %>                  
+                  <% end %>
+                  <% if reserva.estado == 'Aceptada' %>
+                  <%= button_to "Aceptada", update_estado_reserva_path(reserva.id, estado: "Aceptada"), method: :patch, class: "btn btn-success" %>
+                  <br>
+                  <%= button_to "Rechazada", update_estado_reserva_path(reserva.id, estado: "Rechazada"), method: :patch, class: "btn btn-secondary" %>                  
+                  <% end %>
+                  <% if reserva.estado == 'Rechazada' %>
+                  <%= button_to "Aceptada", update_estado_reserva_path(reserva.id, estado: "Aceptada"), method: :patch, class: "btn btn-success" %>
+                  <br>
+                  <%= button_to "Rechazada", update_estado_reserva_path(reserva.id, estado: "Rechazada"), method: :patch, class: "btn btn-secondary" %>                  
+                  <% end %>
+                  <% if reserva.estado == 'Pendiente' || reserva.estado == 'Aceptada' || reserva.estado == 'Rechazada' %>
+                  <br>
+                  <%= button_to "Eliminar", eliminar_reserva_path(reserva.id), method: :delete, class: "btn btn-danger", data: { confirm: "¿Estás seguro de eliminar esta reserva?" } %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>No tienes reservas.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
